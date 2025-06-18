@@ -68,7 +68,17 @@ print(f"Текущее значение счетчика: {counter.value()}")
 Создайте класс Car, который будет иметь атрибуты для марки, модели и года выпуска. 
 Добавьте метод для отображения информации об автомобиле.
 """
-
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    def info(self):
+        inform = (f"Марка:{self.make}\nМодель:{self.model}\nГод выпуска:{self.year}")
+        return inform
+car = Car("Lada", "Vesta", 2015)
+print(car.__dict__)
+print(car.info())
 
 
 """
@@ -76,3 +86,28 @@ print(f"Текущее значение счетчика: {counter.value()}")
 Создайте класс Student, который будет иметь атрибуты имени, фамилии и списка оценок. 
 Реализуйте методы для добавления оценки и вычисления среднего балла.
 """
+
+class Student:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+        self.list_of_ratings = []       #создаем пустой список оценок
+
+    def add_grade(self, grade):
+        self.list_of_ratings.append(grade)          #добавление оценки в список
+
+    def average(self):
+        average = sum(self.list_of_ratings) / len(self.list_of_ratings)     #вычисляем средний бал
+        return average
+
+    def info(self):
+        inform = (f"{self.name} {self.surname} имеет средний бал: {self.average()}")
+        return inform
+student = Student("Вася", "Петров")
+student.add_grade(5)
+student.add_grade(5)
+student.add_grade(3)
+student.add_grade(4)
+student.add_grade(2)
+
+print(student.info())
